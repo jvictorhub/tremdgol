@@ -1,0 +1,91 @@
+{
+    "events": [
+        {
+            "id": 1,
+            "description": "live events",
+            "response": {
+                "botVersion": 113,
+                "result": {
+                    "loopMsgText": "\nInPlay=8 (active=0) len=0 (v113) last:1s lim:3573",
+                    "liveEvents": []
+                }
+            }
+        },
+        {
+            "id": 2,
+            "description": "upcoming events",
+            "response": {
+                "botVersion": 113,
+                "result": {
+                    "upcomingEvents": []
+                }
+            }
+        }
+    ],
+    "soccer_tv_guide": [
+        {
+            "id": 1,
+            "botVersion": 19,
+            "updated_at": "2022-05-23T15:23:40.901Z",
+            "title": "Lista de jogos com transmissão na TV",
+            "events": []
+        },
+        {
+            "id": 2,
+            "response": {
+                "botVersion": "v514",
+                "updated_at": "2022-05-23T10:26:55.144Z",
+                "upcomingEventsOfSelectedTeams_total": 0,
+                "upcomingEventsOfSelectedTeams": []
+            }
+        },
+        {
+            "id": 3,
+            "response": {
+                "botVersion": "v201",
+                "updated_at": "2022-05-23T10:17:39.517Z",
+                "upcomingEvents100pctBestOverArray_HT_total": 0,
+                "upcomingEvents100pctBestOverArray_HT": []
+            }
+        },
+        {
+            "id": 4,
+            "response": {
+                "botVersion": "v201",
+                "updated_at": "2022-05-23T10:17:40.547Z",
+                "upcomingEvents100pctBestOverArray_2T_total": 0,
+                "upcomingEvents100pctBestOverArray_2T": []
+            }
+        }
+    ],
+    "test_endpoint_1": [
+        {
+            "id": 1,
+            "value": "test"
+        }
+    ],
+    "test_endpoint_2": [
+        {
+            "id": 1,
+            "value": "test"
+        }
+    ],
+    "test_endpoint_3": [
+        {
+            "id": 1,
+            "value": "test"
+        }
+    ],
+    "test_endpoint_4": [
+        {
+            "id": 1,
+            "value": "test"
+        }
+    ],
+    "test_endpoint_5": [
+        {
+            "id": 1,
+            "value": "test"
+        }
+    ]
+}
