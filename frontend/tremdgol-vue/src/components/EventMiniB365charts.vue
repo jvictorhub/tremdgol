@@ -48,17 +48,20 @@
             <v-sheet class="opacity-full" width="33">{{ event.points.off_target_away }}</v-sheet>
           </v-sheet>
           <v-sheet class="mb-1 d-flex opacity-full flex-row justify-center align-center elevation-0 rounded-lg">
-            <v-sheet class="mx-3 opacity-full d-flex flex-column align-center">
+            <v-sheet
+              :class="'mx-3 d-flex flex-column align-center ' + (event.points.att_home === 0 && event.points.att_away === 0 ? ' opacity-half ' : ' ')"
+            >
               <v-sheet class="opacity-full d-flex flex-row align-center">
                 {{ event.points.att_home }}
                 <v-progress-circular
-                  class="mx-1 "
+                  class="mx-1"
                   :rotate="180 - event.points.att_home_pct * 1.8"
-                  background-color="pink lighten-3"
+                  background-color="grey lighten-1"
                   :size="40"
                   :width="7"
                   :value="event.points.att_home_pct > 0 ? event.points.att_home_pct : 0"
                   color="primary"
+                  style="$progress-circular-underlay-stroke: rgba(map-get($red, 'base'), 0.4) !default"
                 >
                   att
                 </v-progress-circular>
@@ -66,11 +69,15 @@
               </v-sheet>
             </v-sheet>
 
-            <v-sheet class="mx-3 opacity-full d-flex flex-column align-center">
+            <v-sheet
+              :class="
+                'mx-3 d-flex flex-column align-center ' + (event.points.datt_home === 0 && event.points.datt_away === 0 ? ' opacity-half ' : ' ')
+              "
+            >
               <v-sheet class="opacity-full d-flex flex-row align-center">
                 {{ event.points.datt_home }}
                 <v-progress-circular
-                  class="mx-1 "
+                  class="mx-1"
                   :rotate="180 - event.points.datt_home_pct * 1.8"
                   background-color="pink lighten-3"
                   :size="50"
@@ -84,11 +91,16 @@
               </v-sheet>
             </v-sheet>
 
-            <v-sheet class="mx-3 opacity-full d-flex flex-column align-center">
-              <v-sheet class="opacity-full d-flex flex-row align-center">
+            <v-sheet
+              :class="
+                'mx-3 d-flex flex-column align-center ' +
+                (event.points.possession_home === 0 && event.points.possession_away === 0 ? ' opacity-half ' : ' ')
+              "
+            >
+              <v-sheet class="d-flex flex-row align-center">
                 {{ event.points.possession_home }}
                 <v-progress-circular
-                  class="mx-1 "
+                  class="mx-1"
                   :rotate="180 - event.points.possession_home * 1.8"
                   background-color="pink lighten-3"
                   :size="40"
@@ -104,7 +116,7 @@
           </v-sheet>
         </v-sheet>
       </template>
-      <span style="white-space:pre">
+      <span style="white-space: pre">
         <h3>🎯 on target shots</h3>
         <h3>👟 off target shots</h3>
         <h3>🔥 dangerous attack</h3>
@@ -114,7 +126,6 @@
 </template>
 
 <script>
-
 export default {
   name: "EventMiniB365charts",
 
@@ -131,3 +142,9 @@ export default {
   methods: {},
 };
 </script>
+
+<style lang="scss">
+.opacity-half {
+  opacity: 0.5;
+}
+</style>

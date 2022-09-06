@@ -1,0 +1,38 @@
+
+// STACKOVERFLOW https://vuetifyjs.com/en/features/sass-variables/#vue-cli-install
+// Globals
+// $body-font-family: 'Work Sans', serif;
+// $border-radius-root: 6px;
+// $font-size-root: 14px;
+
+// Variables must come before the import
+/*
+$btn-letter-spacing: 0;
+$btn-font-weight: 400;
+$list-item-title-font-size: 0.929rem;
+$list-item-dense-title-font-size: 0.929rem;
+$list-item-dense-title-font-weight: initial;
+$fab-icon-sizes: (
+  'small': 20
+);
+$btn-sizes: (
+  'default': 41,
+  'large': 54
+);
+
+$headings: (
+  'h1': (
+    'size': 3.3125rem,
+    'line-height': 1.15em
+  ),
+  'h2': (
+    'size': 2.25rem,
+    'line-height': 1.5em
+  )
+);
+*/
+
+// frontend\tremdgol-vue\node_modules\vuetify\src\components\VProgressCircular\_variables.scss
+// $progress-circular-underlay-stroke: rgba(map-get($grey, 'base'), 0.4) !default;
+$progress-circular-underlay-stroke: #9E9E9E !default;
+$progress-circular-underlay-stroke-light: #EEEEEE !default;
