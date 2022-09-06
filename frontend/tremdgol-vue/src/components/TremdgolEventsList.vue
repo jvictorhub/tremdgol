@@ -102,7 +102,7 @@
         <v-sheet class="pt-4 pb-2">
           <EventTimelineMINI :event="event" :width="440" :showClock="false" :elevation="0" />
         </v-sheet>
-        <v-sheet class="mx-1 mb-0 pa-3 elevation-0 d-flex flex-column align-center">
+        <v-sheet class="mx-1 mb-0 pa-2 elevation-0 d-flex flex-column align-center">
           <EventMiniB365charts :event="event" :key="event.fullName + '_bsfEventData_' + event.enClock" />
         </v-sheet>
       </v-sheet>

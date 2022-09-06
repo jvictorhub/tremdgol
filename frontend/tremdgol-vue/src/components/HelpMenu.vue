@@ -7,7 +7,7 @@
         </v-btn>
       </v-sheet>
     </template>
-    <v-sheet class="px-5 py-4 white d-flex flex-column align-center">
+    <v-sheet class="px-5 py-4 white d-flex flex-column align-center text-center">
       <v-sheet class="text-subtitle-2">
         Try the Android TremdGol app.
         <br />
