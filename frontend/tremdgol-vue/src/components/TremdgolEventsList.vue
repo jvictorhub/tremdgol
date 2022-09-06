@@ -35,7 +35,7 @@
         :elevation="typeStarredOrNormalList === 'starred' ? '5' : '3'"
       >
         <v-sheet class="pa-1 rounded-lg text-center elevation-0 d-flex flex-column align-center justify-center" width="13%" height="100%">
-          <v-sheet class="mx-2 d-flex flex-column align-center justify-center">
+          <v-sheet class="mx-2 pa-2 d-flex flex-column align-center justify-center">
             <v-img
               :src="'https://assets.b365api.com/images/team/m/' + event.home.image_id + '.png'"
               :style="'width: ' + logoSizePx + 'px; height: ' + logoSizePx + 'px'"
@@ -74,7 +74,7 @@
           </v-sheet>
         </v-sheet>
         <v-sheet class="pa-1 rounded-lg text-center elevation-0 d-flex flex-column align-center justify-center" width="13%" height="100%">
-          <v-sheet class="mx-2 d-flex flex-column align-center justify-center">
+          <v-sheet class="mx-2 pa-2 d-flex flex-column align-center justify-center">
             <v-img
               :src="'https://assets.b365api.com/images/team/m/' + event.away.image_id + '.png'"
               :style="'width: ' + logoSizePx + 'px; height: ' + logoSizePx + 'px'"

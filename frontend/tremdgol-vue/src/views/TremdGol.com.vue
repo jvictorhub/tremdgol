@@ -2,13 +2,24 @@
   <v-container fluid class="pa-2 d-flex flex-column align-center elevation-0 grey lighten-4">
     <v-sheet class="d-flex flex-column align-center transparent elevation-0 lighten-2 rounded-lg" width="600" min-height="500">
       <v-sheet v-if="$vuetify.breakpoint.width < 600" class="ma-5 py-10 d-flex flex-column align-center text-center transparent">
-        <TremdGolLogo />
+        <v-sheet class="mb-10 transparent d-flex align-center justify-space-around" :width="$vuetify.breakpoint.width * 0.85">
+          <TremdGolLogo />
+          <HelpMenu />
+        </v-sheet>
+        <v-sheet class="transparent" :width="$vuetify.breakpoint.width * 0.85">
+          <h5 class="mb-10">Use this app in a desktop device for better user experience .</h5>
+          You can try the Android TremdGol app. <br />
+          Available on
+          <a href="https://play.google.com/store/apps/details?id=com.bolanarede.tremdgol_free" target="_blank"> Google Play Store</a>
+        </v-sheet>
         <br />
-        For better user experience, this app must be used in a desktop computer.
-        <br />
-        <HelpMenu />
+        or
+        <v-sheet class="mt-5 text-center transparent" :width="$vuetify.breakpoint.width * 0.85">
+          Rotate your device
+          <v-icon large color="grey darken-1"> mdi-phone-rotate-landscape </v-icon>
+        </v-sheet>
       </v-sheet>
-      <v-sheet v-else class="d-flex flex-column align-center transparent text-wrap elevation-0" width="600" >
+      <v-sheet v-else class="d-flex flex-column align-center transparent text-wrap elevation-0" width="600">
         <v-sheet class="mb-5 pa-2 grey lighten-4 d-flex flex-column justify-center rounded-lg elevation-0">
           <v-sheet class="mb-1 d-flex white align-end text-center justify-space-between elevation-0 transparent" width="100%" height="8">
             <v-progress-linear v-if="loading" indeterminate rounded color="primary" height="3"></v-progress-linear>
@@ -18,7 +29,7 @@
               <TremdGolLogo />
             </v-sheet>
             <v-sheet class="mx-5 d-flex transparent text--h2 font-weight-medium align-center justify-center" width="30%">
-              {{ events.length === 0 ? "no live events" : events.length === 1 ? events.length + " live event" : " live events" }}
+              {{ events.length === 0 ? "no live events" : events.length === 1 ? events.length + " live event" : events.length + " live events" }}
             </v-sheet>
             <v-sheet class="mx-5 px-3 d-flex transparent align-center justify-end" width="25%">
               <HelpMenu />
