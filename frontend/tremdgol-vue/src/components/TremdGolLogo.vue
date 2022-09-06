@@ -1,48 +1,7 @@
 <template>
-  <v-menu offset-y :close-on-content-click="true">
-    <template v-slot:activator="{ on, attrs }">
-      <v-sheet class="mx-2 d-flex flex-column justify-center transparent" v-bind="attrs" v-on="on">
-        <v-img alt="TremdGol Logo" class="shrink mr-2" contain src="../assets/tremdgol_logo@2x.png" transition="scale-transition" width="140" />
-      </v-sheet>
-    </template>
-    <v-sheet class="px-5 py-4 white d-flex flex-column align-center">
-      <v-sheet>
-        Try the Android <a href="https://play.google.com/store/apps/details?id=com.bolanarede.tremdgol_free" target="_blank">TremdGol</a> app version
-        available on Google Play Store.
-      </v-sheet>
-      <v-sheet class="ma-3">
-        <v-dialog v-model="dialog" width="500">
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn color="grey lighten-2" v-bind="attrs" small v-on="on"> ABOUT </v-btn>
-          </template>
-
-          <v-card>
-            <v-card-title class="text-h5 grey lighten-2"> About this app</v-card-title>
-
-            <v-card-text>
-              <v-sheet class="mt-5 mx-15 text-wrap text-center text-caption text--secondary">
-                Responsive web page built from scratch with <b>VUE.JS</b>, a framework running over <b>NODE.JS</b>, using <b>JAVASCRIPT</b>,
-                <b>HTML</b> and <b>CSS</b>. In addition, to faster and beauty design I used <b>VUETIFY</b> UI library and some
-                <b>MATERIAL DESIGN ICONS</b>. Hosted in a Linux <b>UBUNTU</b> dedicated server at <b>DIGITALOCEAN</b> cloud infraestructure. Version
-                control by <b>GIT</b> and <b>GITHUB</b>. Reverse proxy with <b>NGINX</b>. <b>SSL</b> certification with <b>CERTBOT</b> and Linux
-                process management with <b>PM2</b> | screen res: {{ $vuetify.breakpoint.width }}x{{ $vuetify.breakpoint.height }} <br /><br />No data
-                is collected from your device.
-                <br />
-                <a href="https://github.com/jvictorjs" target="_blank">@jvictorjs</a>
-              </v-sheet>
-            </v-card-text>
-
-            <v-divider></v-divider>
-
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="primary" text @click="dialog = false"> Close </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
-      </v-sheet>
-    </v-sheet>
-  </v-menu>
+  <v-sheet class="mx-2 d-flex flex-column justify-center transparent">
+    <v-img alt="TremdGol Logo" class="shrink mr-2" contain src="../assets/tremdgol_logo@2x.png" transition="scale-transition" width="140" />
+  </v-sheet>
 </template>
 
 <script>
@@ -54,9 +13,7 @@ export default {
   props: [],
 
   data() {
-    return {
-      dialog: false,
-    };
+    return {};
   },
   created() {},
   mounted() {},

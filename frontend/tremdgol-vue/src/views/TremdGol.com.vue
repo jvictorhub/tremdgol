@@ -1,25 +1,32 @@
 <template>
-  <v-container fluid class="pa-2 d-flex flex-column align-center elevation-0 grey lighten-4" width="95%">
-    <v-sheet class="d-flex flex-column align-center transparent elevation-0 lighten-2 rounded-lg" max-width="1000" min-height="500">
+  <v-container fluid class="pa-2 d-flex flex-column align-center elevation-0 grey lighten-4">
+    <v-sheet class="d-flex flex-column align-center transparent elevation-0 lighten-2 rounded-lg" width="600" min-height="500">
       <v-sheet v-if="$vuetify.breakpoint.width < 600" class="ma-5 py-10 d-flex flex-column align-center text-center transparent">
         <TremdGolLogo />
         <br />
         For better user experience, this app must be used in a desktop computer.
+        <br />
+        <HelpMenu />
       </v-sheet>
-      <v-sheet v-else class="d-flex flex-column align-center transparent" style="white-space: pre">
+      <v-sheet v-else class="d-flex flex-column align-center transparent text-wrap elevation-0" width="600" >
         <v-sheet class="mb-5 pa-2 grey lighten-4 d-flex flex-column justify-center rounded-lg elevation-0">
           <v-sheet class="mb-1 d-flex white align-end text-center justify-space-between elevation-0 transparent" width="100%" height="8">
             <v-progress-linear v-if="loading" indeterminate rounded color="primary" height="3"></v-progress-linear>
           </v-sheet>
           <v-sheet class="px-10 d-flex flex-row align-center justify-space-between transparent elevation-0">
-            <TremdGolLogo />
-            <v-sheet class="mx-5 transparent text--h2 font-weight-medium">
+            <v-sheet class="mx-5 d-flex transparent align-center justify-center" width="25%">
+              <TremdGolLogo />
+            </v-sheet>
+            <v-sheet class="mx-5 d-flex transparent text--h2 font-weight-medium align-center justify-center" width="30%">
               {{ events.length === 0 ? "no live events" : events.length === 1 ? events.length + " live event" : " live events" }}
             </v-sheet>
+            <v-sheet class="mx-5 px-3 d-flex transparent align-center justify-end" width="25%">
+              <HelpMenu />
+            </v-sheet>
           </v-sheet>
-          <v-sheet class="mx-5 px-10 py-1 transparent">
+          <v-sheet class="mx-10 px-10 py-3 transparent elevation-0">
             <h2>Welcome!</h2>
-            <h3 class="font-weight-regular">Choose one event of the list above to see more details and live stats.</h3>
+            <h4 class="font-weight-regular">Choose one event from the list below to see more details and live stats.</h4>
             <v-sheet class="mt-3 transparent">
               <TremdgolEventsList :eventsArray="events" :typeStarredOrNormalList="'normal'" />
             </v-sheet>
@@ -39,12 +46,14 @@ import * as parseEventData_LIB from "../services/parseEventData";
 
 import TremdGolLogo from "../components/TremdGolLogo.vue";
 import TremdgolEventsList from "../components/TremdgolEventsList.vue";
+import HelpMenu from "../components/HelpMenu.vue";
 
 export default {
   name: "TremdGol.com",
   components: {
     TremdGolLogo,
     TremdgolEventsList,
+    HelpMenu,
   },
   data() {
     return {

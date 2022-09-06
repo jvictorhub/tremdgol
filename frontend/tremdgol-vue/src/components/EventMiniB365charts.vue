@@ -119,7 +119,7 @@
       <span style="white-space: pre">
         <h3>🎯 on target shots</h3>
         <h3>👟 off target shots</h3>
-        <h3>🔥 dangerous attack</h3>
+        <h3>🔥 dangerous attacks</h3>
       </span>
     </v-tooltip>
   </v-sheet>

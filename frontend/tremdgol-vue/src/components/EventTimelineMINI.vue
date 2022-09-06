@@ -203,7 +203,7 @@ export default {
       if (!this.redCards) this.eventsToShow = this.eventsToShow.filter((e) => e.symbolToShow !== "🟥");
       if (!this.shotsOnTarget) this.eventsToShow = this.eventsToShow.filter((e) => e.symbolToShow !== "🎯");
       if (!this.shotsOffTarget) this.eventsToShow = this.eventsToShow.filter((e) => e.symbolToShow !== "🥾");
-      // TEST EVENT ABOVE:
+      // TEST EVENT BELOW:
       if (false) {
         this.eventsToShow.push({
           id: "TEST ID",

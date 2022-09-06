@@ -59,7 +59,7 @@
                   <v-icon class="mx-1">mdi-undo</v-icon>
                 </v-btn>
               </template>
-              Undo last shape.
+              Undo last shape
             </v-tooltip>
             <v-menu
               offset-y
@@ -75,55 +75,58 @@
                   <v-icon class="mx-1" :size="hover ? 18 : 18">mdi-cog</v-icon>
                 </v-btn>
               </template>
-              <v-sheet class="pa-2 elevation-3 rounded-lg grey" width="590">
-                <v-sheet class="pa-1">
-                  1. Register events by clicking on the football pitch. <br />
-                  2. Different mouse buttons will draw different shapes: <br />left click -> triangle<br />middle button -> square <br />
-                  right click -> circle<br />
-                  3. Press "control" key to switch to insert ❌ emoji mode (Great Goal Chance Missed). Press number key to change shape color (1-5)
-                  <br />
-                  4. Available soon: Download the events as a csv (spreadsheet).
-                </v-sheet>
-                <v-sheet class="px-2 d-flex flex-row elevation-0 justify-space-between align-center" id="▶▶▶ COLORS ◀◀◀">
-                  <v-radio-group class="mt-1 mb-0" v-model="radios_color" row dense hide-details>
-                    <template v-slot:label> </template>
-                    <v-radio value="yellow" dense>
-                      <template v-slot:label> <strong class="yellow--text text--darken-3">Yellow (1)</strong> </template>
-                    </v-radio>
-                    <v-radio value="blue" dense>
-                      <template v-slot:label> <strong class="primary--text">Blue (2)</strong> </template>
-                    </v-radio>
-                    <v-radio value="red" dense>
-                      <template v-slot:label> <strong class="error--text text--darken-1">Red (3)</strong> </template>
-                    </v-radio>
-                    <v-radio value="black">
-                      <template v-slot:label> <strong class="black--text">Black (4)</strong> </template>
-                    </v-radio>
-                    <v-radio value="grey">
-                      <template v-slot:label> <strong class="grey--text text--darken-1">Grey (5)</strong> </template>
-                    </v-radio>
-                  </v-radio-group>
-                </v-sheet>
-                <v-sheet class="px-2 d-flex flex-row elevation-0 justify-space-between align-center">
-                  <v-sheet class="d-flex flex-row justify-center align-center elevation-0" width="20%">
-                    <v-sheet class="tooltip">
-                      INFO
-                      <span class="tooltiptext"> image source: https://pt.m.wikipedia.org/wiki/Ficheiro:Soccer_field_-_empty.svg<br /> </span>
+              <v-sheet class="pa-2 elevation-3 rounded-lg grey lighten-1" max-width="590">
+                <v-sheet class="pa-1 text-subtitle-2 rounded-lg">
+                  <v-sheet class="pa-2">
+                    1. Register events by clicking on the football pitch. No worry if you refresh the page, events registered still in LOCAL
+                    STORAGE.<br />
+                    2. Press "control" key to switch events insertion mode: shape or emoji (❌: Great Goal Chance Missed). <br />
+                    3. Different mouse buttons will draw different shapes: <br />left click -> triangle<br />middle button -> square <br />
+                    right click -> circle<br />
+                    4. Press number key to change shape color (1-5) <br />
+                    5. Available soon: Download the events as a csv (spreadsheet).
+                  </v-sheet>
+                  <v-sheet>
+                    <v-sheet class="px-2 d-flex flex-row elevation-0 justify-space-between align-center" id="▶▶▶ COLORS ◀◀◀">
+                      <v-radio-group class="mt-0 mb-0" v-model="radios_color" row dense hide-details>
+                        <template v-slot:label> </template>
+                        <v-radio value="yellow" dense>
+                          <template v-slot:label> <strong class="yellow--text text--darken-3">Yellow (1)</strong> </template>
+                        </v-radio>
+                        <v-radio value="blue" dense>
+                          <template v-slot:label> <strong class="primary--text">Blue (2)</strong> </template>
+                        </v-radio>
+                        <v-radio value="red" dense>
+                          <template v-slot:label> <strong class="error--text text--darken-1">Red (3)</strong> </template>
+                        </v-radio>
+                        <v-radio value="black">
+                          <template v-slot:label> <strong class="black--text">Black (4)</strong> </template>
+                        </v-radio>
+                        <v-radio value="grey">
+                          <template v-slot:label> <strong class="grey--text text--darken-1">Grey (5)</strong> </template>
+                        </v-radio>
+                      </v-radio-group>
+                    </v-sheet>
+                    <v-sheet class="pa-3 d-flex flex-row elevation-0 justify-space-between align-center">
+                      <v-sheet class="tooltip">
+                        INFO
+                        <span class="tooltiptext"> image source: https://pt.m.wikipedia.org/wiki/Ficheiro:Soccer_field_-_empty.svg<br /> </span>
+                      </v-sheet>
                     </v-sheet>
                   </v-sheet>
-                </v-sheet>
-                <v-sheet class="px-2 d-flex flex-row elevation-0 justify-space-between align-center">
-                  <v-btn v-if="twoTrianglesControls" color="ma-0 pa-1 grey lighten-2" small @click="clearAndRedraw()">
-                    refresh
-                    <v-icon class="mx-2">mdi-refresh</v-icon>
-                  </v-btn>
-                  <v-sheet v-if="twoTrianglesControls" class="ml-5 my-3 d-flex flex-row elevation-0 align-center" height="30" width="33%">
-                    Two Triangles
-                    <v-switch class="my-1 mx-2" v-model="drawTwoBigTrianglesBol" inset dense hide-details></v-switch>
-                  </v-sheet>
-                  <v-sheet v-if="twoTrianglesControls" class="ml-5 my-3 d-flex flex-row elevation-0 align-center" height="30" width="43%">
-                    Force 2nd half GREY
-                    <v-switch class="my-1 mx-2" v-model="forceAllShapesCreatedAt2ndHalfToGrey" inset dense hide-details></v-switch>
+                  <v-sheet class="px-2 d-flex flex-row elevation-0 justify-space-between align-center">
+                    <v-btn v-if="twoTrianglesControls" color="ma-0 pa-1 grey lighten-2" small @click="clearAndRedraw()">
+                      refresh
+                      <v-icon class="mx-2">mdi-refresh</v-icon>
+                    </v-btn>
+                    <v-sheet v-if="twoTrianglesControls" class="ml-5 my-3 d-flex flex-row elevation-0 align-center" height="30" width="33%">
+                      Two Triangles
+                      <v-switch class="my-1 mx-2" v-model="drawTwoBigTrianglesBol" inset dense hide-details></v-switch>
+                    </v-sheet>
+                    <v-sheet v-if="twoTrianglesControls" class="ml-5 my-3 d-flex flex-row elevation-0 align-center" height="30" width="43%">
+                      Force 2nd half GREY
+                      <v-switch class="my-1 mx-2" v-model="forceAllShapesCreatedAt2ndHalfToGrey" inset dense hide-details></v-switch>
+                    </v-sheet>
                   </v-sheet>
                 </v-sheet>
               </v-sheet>
