@@ -14,8 +14,8 @@
                 <span v-bind="attrs" v-on="on" :class="ev.class" style="z-index:1"> {{ ev.symbolToShow }} </span>
               </v-sheet>
             </template>
-            <v-sheet class="text-h4"> {{ ev.text }} </v-sheet>
-            <span class="pa-5" style="white-space: pre-wrap">{{ ev }}</span>
+            <v-sheet class="px-2 text-h6 rounded-lg"> {{ ev.text }} </v-sheet>
+            <span class="pa-5 text-caption" style="white-space: pre-wrap">{{ ev }}</span>
           </v-tooltip>
         </v-sheet>
       </v-sheet>

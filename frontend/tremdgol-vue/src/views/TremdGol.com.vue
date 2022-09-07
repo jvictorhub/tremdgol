@@ -3,7 +3,6 @@
     <v-sheet v-if="$vuetify.breakpoint.width < 600" class="ma-5 py-10 d-flex flex-column align-center text-center transparent">
       <v-sheet class="mb-10 transparent d-flex align-center justify-space-around">
         <TremdGolLogo />
-        <HelpMenu />
       </v-sheet>
       <v-sheet class="transparent" max-width="360">
         <h5 class="mb-10">Use this app in a desktop device for better user experience.</h5>
@@ -30,7 +29,7 @@
           {{ events.length === 0 ? "no live events" : events.length === 1 ? events.length + " live event" : events.length + " live events" }}
         </v-sheet>
         <v-sheet class="px-3 d-flex transparent align-center justify-end elevation-0" width="150">
-          <HelpMenu />
+          <SettingsMenu />
         </v-sheet>
       </v-sheet>
       <v-sheet class="mx-10 px-10 py-3 transparent elevation-0">
@@ -53,14 +52,14 @@ import * as parseEventData_LIB from "../services/parseEventData";
 
 import TremdGolLogo from "../components/TremdGolLogo.vue";
 import TremdgolEventsList from "../components/TremdgolEventsList.vue";
-import HelpMenu from "../components/HelpMenu.vue";
+import SettingsMenu from "../components/SettingsMenu.vue";
 
 export default {
   name: "TremdGol.com",
   components: {
     TremdGolLogo,
     TremdgolEventsList,
-    HelpMenu,
+    SettingsMenu,
   },
   data() {
     return {
@@ -138,7 +137,8 @@ export default {
         })
         .catch((error) => {
           console.error(error);
-          alert("something went wrong with the getTremdgolLiveEvents endpoint");
+          console.error("Something went wrong with the getTremdgolLiveEvents endpoint");
+          //alert("something went wrong with the getTremdgolLiveEvents endpoint");
           this.loading = false;
           console.log(`getTremdgolLiveEvents() --- END ${conversorsAndParsersLib.getDatehhmmss(new Date())} `);
         });

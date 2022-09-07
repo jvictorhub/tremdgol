@@ -1,23 +1,33 @@
 <template>
-  <v-menu offset-y :close-on-content-click="true">
+  <v-menu offset-y :close-on-content-click="false">
     <template v-slot:activator="{ on, attrs }">
       <v-sheet class="mx-2 d-flex flex-column justify-center transparent" v-bind="attrs" v-on="on">
         <v-btn color="ma-0 pa-1 grey lighten-2 " x-small fab>
-          <v-icon class="mx-2">mdi-help</v-icon>
+          <v-icon class="mx-2">mdi-dots-vertical</v-icon>
         </v-btn>
       </v-sheet>
     </template>
-    <v-sheet class="px-5 py-4 white d-flex flex-column align-center text-center">
-      <v-sheet class="text-subtitle-2">
-        Try the Android TremdGol app.
-        <br />
-        Available on
-        <a href="https://play.google.com/store/apps/details?id=com.bolanarede.tremdgol_free" target="_blank"> Google Play Store</a>
+    <v-sheet class="px-5 py-4 white lighten-2 d-flex flex-column align-center text-center">
+      <v-sheet
+        class="d-flex flex-row align-center justify-space-around text-center pa-1 px-2 elevation-2 black--text font-weight-medium grey lighten-3 rounded-lg"
+      >
+        Team market values
+        <v-sheet class="ml-2 d-flex flex-column align-center justify-center elevation-0 transparent" width="55">
+          <v-switch
+            :value="this.$store.state.showTeamsMarketValues"
+            class="mt-0 ml-5"
+            inset
+            dense
+            hide-spin-buttons
+            hide-details
+            @change="toggleShowTeamsMarketValues"
+          ></v-switch>
+        </v-sheet>
       </v-sheet>
-      <v-sheet class="ma-3">
+      <v-sheet class="mt-4">
         <v-dialog v-model="dialog" width="500">
           <template v-slot:activator="{ on, attrs }">
-            <v-btn color="grey lighten-2" v-bind="attrs" small v-on="on"> ABOUT </v-btn>
+            <v-btn color="grey lighten-3" v-bind="attrs" small v-on="on"> ABOUT </v-btn>
           </template>
 
           <v-card>
@@ -30,9 +40,12 @@
                 <b>DIGITALOCEAN</b> cloud infraestructure. Version control by <b>GIT</b> and <b>GITHUB</b>. Reverse proxy with <b>NGINX</b>.
                 <b>SSL</b> certification with <b>CERTBOT</b> and Linux process management with <b>PM2</b>. <br />Screen res:
                 {{ $vuetify.breakpoint.width }}x{{ $vuetify.breakpoint.height }} <br /><br />No data is collected from your device.
-                <br />
-                2022 <a href="https://github.com/jvictorjs" target="_blank">@jvictorjs</a>
               </v-sheet>
+              <v-sheet class="mt-3 text-caption text-center">
+                Try the Android TremdGol app. Available on
+                <a href="https://play.google.com/store/apps/details?id=com.bolanarede.tremdgol_free" target="_blank"> Google Play Store</a>
+              </v-sheet>
+              <v-sheet class="mt-3 text-caption text-center"> 2022 <a href="https://github.com/jvictorjs" target="_blank">@jvictorjs</a> </v-sheet>
             </v-card-text>
 
             <v-divider></v-divider>
@@ -50,7 +63,7 @@
 
 <script>
 export default {
-  name: "TremdGolLogo",
+  name: "SettingsMenu",
 
   components: {},
 
@@ -64,6 +77,10 @@ export default {
   created() {},
   mounted() {},
   watch: {},
-  methods: {},
+  methods: {
+    toggleShowTeamsMarketValues() {
+      this.$store.commit("setShowTeamsMarketValues", !this.$store.state.showTeamsMarketValues);
+    },
+  },
 };
 </script>

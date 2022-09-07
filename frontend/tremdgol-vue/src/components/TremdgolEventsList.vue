@@ -85,6 +85,17 @@
       </v-sheet>
 
       <v-sheet v-if="matchDetailsVisibleDictionary[event.id]" class="mt-n1 px-3 pb-2 rounded-b-lg d-flex flex-column align-center mb-3 elevation-3">
+        <v-sheet
+          v-if="
+            $store.state.showTeamsMarketValues &&
+            event.tm_stats &&
+            event.tm_stats.total_market_value[0] > 0 &&
+            event.tm_stats.total_market_value[1] > 0
+          "
+          class="mx-1 mb-0 pa-1 py-3 elevation-0 d-flex flex-column align-center"
+        >
+          <TeamMarketValue :event="event" />
+        </v-sheet>
         <v-sheet class="d-flex pa-1 rounded-lg">
           <EventSoccerOppsMapLoggerMINI
             :event="event"
@@ -116,6 +127,7 @@ import * as parseEventData_LIB from "../services/parseEventData";
 import EventSoccerOppsMapLoggerMINI from "./EventSoccerOppsMapLoggerMINI";
 import EventMiniB365charts from "./EventMiniB365charts";
 import EventTimelineMINI from "./EventTimelineMINI";
+import TeamMarketValue from "./TeamMarketValue";
 
 export default {
   name: "TremdgolEventsList",
@@ -126,6 +138,7 @@ export default {
     EventSoccerOppsMapLoggerMINI,
     EventMiniB365charts,
     EventTimelineMINI,
+    TeamMarketValue,
   },
 
   data() {
