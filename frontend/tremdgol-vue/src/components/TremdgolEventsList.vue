@@ -16,75 +16,94 @@
       max-width="544"
       :color="typeStarredOrNormalList === 'starred' ? 'blue-grey lighten-2' : ''"
     >
-      <v-menu offset-y :close-on-content-click="false">
-        <template v-slot:activator="{ on, attrs }">
-          <v-sheet class="mb-n1 px-2 text-center elevation-2 grey lighten-2 rounded-xl" style="z-index: 1" v-bind="attrs" v-on="on">
-            <h5>{{ event.minuteClock }}</h5>
-          </v-sheet>
-        </template>
-        <v-sheet class="pa-2 d-flex flex-column grey lighten-3 text-caption">
-          {{ event }}
-        </v-sheet>
-      </v-menu>
-      <v-sheet
-        :class="
-          'd-flex flex-row justify-space-between align-center elevation-10 rounded-lg ' + (typeStarredOrNormalList === 'starred' ? 'mb-3' : 'mb-2')
-        "
-        width="100%"
-        min-height="82"
-        :elevation="typeStarredOrNormalList === 'starred' ? '5' : '3'"
-      >
-        <v-sheet class="pa-1 rounded-lg text-center elevation-0 d-flex flex-column align-center justify-center" width="13%" height="100%">
-          <v-sheet class="mx-2 pa-2 d-flex flex-column align-center justify-center">
-            <v-img
-              :src="'https://assets.b365api.com/images/team/m/' + event.home.image_id + '.png'"
-              :style="'width: ' + logoSizePx + 'px; height: ' + logoSizePx + 'px'"
-              transition="scale-transition"
-            />
-          </v-sheet>
-        </v-sheet>
-        <v-sheet
-          class="mt-0 mx-1 d-flex flex-column align-center transparent elevation-0"
-          min-height="75"
-          width="73%"
-          @click="toggleMatchDetailsVisible(event)"
-        >
-          <v-sheet class="mb-n3 mt-2 elevation-0">
-            <h5 class="grey--text">{{ event.league.name }}</h5>
-          </v-sheet>
-          <v-sheet class="mt-0 d-flex flex-row flex-wrap text-wrap elevation-0 rounded-lg justify-space-between transparent" width="100%">
-            <v-sheet class="pt-2 d-flex flex-column text-center align-center justify-center elevation-0 transparent" width="39%">
-              <h3>{{ event.home.name }}</h3>
+      <v-hover v-slot="{ hover }">
+        <v-sheet width="100%" class="d-flex flex-column transparent elevation-0">
+          <v-menu offset-y :close-on-content-click="false">
+            <template v-slot:activator="{ on, attrs }">
+              <v-sheet class="mt-1 mb-n1 px-2 mx-auto text-center elevation-2 grey lighten-2 rounded-xl" style="z-index: 1" v-bind="attrs" v-on="on">
+                <h5>{{ event.minuteClock }}</h5>
+              </v-sheet>
+            </template>
+            <v-sheet class="pa-2 d-flex flex-column grey lighten-3 text-caption">
+              {{ event }}
             </v-sheet>
-            <v-sheet class="pt-3 d-flex flex-column text-center align-center justify-center elevation-0 transparent" width="20%" min-height="55">
-              <v-tooltip bottom>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-sheet v-bind="attrs" v-on="on" class="transparent">
-                    <h2 class="my-n1">
-                      {{ event.ss }}
-                    </h2>
+          </v-menu>
+          <div
+            :style="
+              'width:100%; border: 0px solid transparent; border-radius: 20px; margin-bottom:4px;' +
+              (hover ? ' box-shadow: 0px 0px 33px -10px grey; ' : ' ')
+            "
+          >
+            <v-sheet
+              :class="
+                'd-flex flex-row justify-space-between align-center elevation-10 rounded-lg ' +
+                (typeStarredOrNormalList === 'starred' ? 'mb-3 ' : 'mb-0 ')
+              "
+              width="100%"
+              min-height="82"
+              :elevation="typeStarredOrNormalList === 'starred' ? '5' : '3'"
+            >
+              <v-sheet class="pa-1 rounded-lg text-center elevation-0 d-flex flex-column align-center justify-center" width="13%" height="100%">
+                <v-sheet class="mx-2 pa-2 d-flex flex-column align-center justify-center">
+                  <v-img
+                    :src="'https://assets.b365api.com/images/team/m/' + event.home.image_id + '.png'"
+                    :style="'width: ' + logoSizePx + 'px; height: ' + logoSizePx + 'px'"
+                    transition="scale-transition"
+                  />
+                </v-sheet>
+              </v-sheet>
+              <v-sheet
+                class="mt-0 mx-1 d-flex flex-column align-center transparent elevation-0"
+                min-height="75"
+                width="73%"
+                @click="toggleMatchDetailsVisible(event)"
+              >
+                <v-sheet class="mb-n3 mt-2 elevation-0">
+                  <h5 class="grey--text">{{ event.league.name }}</h5>
+                </v-sheet>
+                <v-sheet class="mt-0 d-flex flex-row flex-wrap text-wrap elevation-0 rounded-lg justify-space-between transparent" width="100%">
+                  <v-sheet class="pt-2 d-flex flex-column text-center align-center justify-center elevation-0 transparent" width="39%">
+                    <h3>{{ event.home.name }}</h3>
                   </v-sheet>
-                </template>
-                <EventTimelineMINI :event="event" :width="420" :showClock="false" :elevation="0" />
-              </v-tooltip>
+                  <v-sheet
+                    class="pt-3 d-flex flex-column text-center align-center justify-center elevation-0 transparent"
+                    width="20%"
+                    min-height="55"
+                  >
+                    <v-tooltip bottom>
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-sheet v-bind="attrs" v-on="on" class="transparent">
+                          <h2 class="my-n1">
+                            {{ event.ss }}
+                          </h2>
+                        </v-sheet>
+                      </template>
+                      <EventTimelineMINI :event="event" :width="420" :showClock="false" :elevation="0" />
+                    </v-tooltip>
+                  </v-sheet>
+                  <v-sheet class="pt-2 d-flex flex-column text-center align-center justify-center elevation-0 transparent" width="39%">
+                    <h3>{{ event.away.name }}</h3>
+                  </v-sheet>
+                </v-sheet>
+              </v-sheet>
+              <v-sheet class="pa-1 rounded-lg text-center elevation-0 d-flex flex-column align-center justify-center" width="13%" height="100%">
+                <v-sheet class="mx-2 pa-2 d-flex flex-column align-center justify-center">
+                  <v-img
+                    :src="'https://assets.b365api.com/images/team/m/' + event.away.image_id + '.png'"
+                    :style="'width: ' + logoSizePx + 'px; height: ' + logoSizePx + 'px'"
+                    transition="scale-transition"
+                  />
+                </v-sheet>
+              </v-sheet>
             </v-sheet>
-            <v-sheet class="pt-2 d-flex flex-column text-center align-center justify-center elevation-0 transparent" width="39%">
-              <h3>{{ event.away.name }}</h3>
-            </v-sheet>
-          </v-sheet>
+          </div>
         </v-sheet>
-        <v-sheet class="pa-1 rounded-lg text-center elevation-0 d-flex flex-column align-center justify-center" width="13%" height="100%">
-          <v-sheet class="mx-2 pa-2 d-flex flex-column align-center justify-center">
-            <v-img
-              :src="'https://assets.b365api.com/images/team/m/' + event.away.image_id + '.png'"
-              :style="'width: ' + logoSizePx + 'px; height: ' + logoSizePx + 'px'"
-              transition="scale-transition"
-            />
-          </v-sheet>
-        </v-sheet>
-      </v-sheet>
-
-      <v-sheet v-if="matchDetailsVisibleDictionary[event.id]" class="mt-n1 px-3 pb-2 rounded-b-lg d-flex flex-column align-center mb-3 elevation-3" width="440">
+      </v-hover>
+      <v-sheet
+        v-if="matchDetailsVisibleDictionary[event.id]"
+        class="mt-0 px-3 pb-1 mb-3 rounded-b-lg d-flex flex-column align-center elevation-3"
+        width="440"
+      >
         <v-sheet
           v-if="
             $store.state.showTeamsMarketValues &&

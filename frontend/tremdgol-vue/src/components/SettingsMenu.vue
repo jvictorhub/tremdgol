@@ -1,5 +1,5 @@
 <template>
-  <v-menu offset-y :close-on-content-click="false" open-on-hover>
+  <v-menu offset-y :close-on-content-click="false">
     <template v-slot:activator="{ on, attrs }">
       <v-sheet class="mx-2 d-flex flex-column justify-center transparent" v-bind="attrs" v-on="on">
         <v-btn color="ma-0 pa-1 grey lighten-2 " x-small fab>
