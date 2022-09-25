@@ -1,5 +1,5 @@
 <template>
-  <v-menu offset-y :close-on-content-click="false">
+  <v-menu offset-y :close-on-content-click="false" open-on-hover>
     <template v-slot:activator="{ on, attrs }">
       <v-sheet class="mx-2 d-flex flex-column justify-center transparent" v-bind="attrs" v-on="on">
         <v-btn color="ma-0 pa-1 grey lighten-2 " x-small fab>
@@ -9,13 +9,13 @@
     </template>
     <v-sheet class="px-5 py-4 white lighten-2 d-flex flex-column align-center text-center">
       <v-sheet
-        class="d-flex flex-row align-center justify-space-around text-center pa-1 px-2 elevation-2 black--text font-weight-medium grey lighten-3 rounded-lg"
+        class="d-flex flex-row align-center justify-space-around text-caption text-center pa-1 px-2 elevation-2 black--text font-weight-medium grey lighten-3 rounded-lg"
       >
         Team market values
-        <v-sheet class="ml-2 d-flex flex-column align-center justify-center elevation-0 transparent" width="55">
+        <v-sheet class="ml-1 d-flex flex-column align-center justify-center elevation-0 transparent" width="44">
           <v-switch
             :value="this.$store.state.showTeamsMarketValues"
-            class="mt-0 ml-5"
+            class="mt-0 ml-2"
             inset
             dense
             hide-spin-buttons

@@ -65,7 +65,7 @@
                     </h2>
                   </v-sheet>
                 </template>
-                <EventTimelineMINI :event="event" :width="440" :showClock="false" :elevation="0" />
+                <EventTimelineMINI :event="event" :width="420" :showClock="false" :elevation="0" />
               </v-tooltip>
             </v-sheet>
             <v-sheet class="pt-2 d-flex flex-column text-center align-center justify-center elevation-0 transparent" width="39%">
@@ -84,7 +84,7 @@
         </v-sheet>
       </v-sheet>
 
-      <v-sheet v-if="matchDetailsVisibleDictionary[event.id]" class="mt-n1 px-3 pb-2 rounded-b-lg d-flex flex-column align-center mb-3 elevation-3">
+      <v-sheet v-if="matchDetailsVisibleDictionary[event.id]" class="mt-n1 px-3 pb-2 rounded-b-lg d-flex flex-column align-center mb-3 elevation-3" width="440">
         <v-sheet
           v-if="
             $store.state.showTeamsMarketValues &&
@@ -111,7 +111,7 @@
           />
         </v-sheet>
         <v-sheet class="pt-4 pb-2">
-          <EventTimelineMINI :event="event" :width="440" :showClock="false" :elevation="0" />
+          <EventTimelineMINI :event="event" :width="360" :showClock="false" :elevation="0" />
         </v-sheet>
         <v-sheet class="mx-1 mb-0 pa-2 elevation-0 d-flex flex-column align-center">
           <EventMiniB365charts :event="event" :key="event.fullName + '_bsfEventData_' + event.enClock" />

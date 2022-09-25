@@ -32,9 +32,11 @@
           <SettingsMenu />
         </v-sheet>
       </v-sheet>
-      <v-sheet class="mx-10 px-10 py-3 transparent elevation-0">
-        <h2>Welcome!</h2>
-        <h4 class="font-weight-regular">Choose one event from the list below to see more details and live stats.</h4>
+      <v-sheet class="mx-10 px-7 py-3 transparent elevation-0" width="100%">
+        <v-sheet class="transparent">
+          <h2>Welcome!</h2>
+          <h4 class="font-weight-regular">Choose one event from the list below to see more details and live stats.</h4>
+        </v-sheet>
         <v-sheet class="mt-3 transparent">
           <TremdgolEventsList :eventsArray="events" :typeStarredOrNormalList="'normal'" />
         </v-sheet>
