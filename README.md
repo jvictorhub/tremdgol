@@ -1,7 +1,7 @@
 
 [comment]: <> (CTRL + SHIF + V to preview markdown in VSCode)
 
-# Description
+# tremdgol
 
 Web version of TremdGol app: live soccer games statistics with a canvas to register the events of the match. Backend data comes from [tremdgol-backend](https://github.com/jvictorjs/tremdgol-backend) project.
 
