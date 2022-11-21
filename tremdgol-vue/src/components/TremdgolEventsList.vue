@@ -1,7 +1,8 @@
 <template>
   <v-sheet
     :class="
-      'transparent d-flex ' + (typeStarredOrNormalList === 'starred' ? 'flex-row  elevation-10 pa-5 overflow-x-auto ' : ' flex-column align-center ')
+      'transparent d-flex ' +
+      (typeStarredOrNormalList === 'starred' ? 'flex-row  elevation-0 pa-0 overflow-x-auto align-start ' : ' flex-column align-center ')
     "
   >
     <v-sheet
@@ -14,34 +15,62 @@
       "
       min-width="525"
       max-width="544"
-      :color="typeStarredOrNormalList === 'starred' ? 'blue-grey lighten-2' : ''"
+      :color="typeStarredOrNormalList === 'starred' ? 'transparent lighten-4' : ''"
     >
       <v-hover v-slot="{ hover }">
         <v-sheet width="100%" class="d-flex flex-column transparent elevation-0">
-          <v-menu offset-y :close-on-content-click="false">
-            <template v-slot:activator="{ on, attrs }">
-              <v-sheet class="mt-1 mb-n1 px-2 mx-auto text-center elevation-2 grey lighten-2 rounded-xl" style="z-index: 1" v-bind="attrs" v-on="on">
+          <v-sheet class="d-flex flex-row transparent align-center justify-center elevation-0">
+            <v-sheet v-if="hover || typeStarredOrNormalList === 'starred'" class="elevation-10" width="30"></v-sheet>
+            <v-sheet class="d-flex align-center justify-center transparent elevation-0" style="z-index: 1">
+              <v-sheet class="mt-1 mb-n1 px-2 text-center elevation-2 grey lighten-2 rounded-xl" style="z-index: 1">
                 <h5>{{ event.minuteClock }}</h5>
               </v-sheet>
-            </template>
-            <v-sheet class="pa-2 d-flex flex-column grey lighten-3 text-caption">
-              {{ event }}
             </v-sheet>
-          </v-menu>
+            <!-- 
+            <v-menu offset-y :close-on-content-click="false">
+              <template v-slot:activator="{ on, attrs }">
+                <v-sheet class="d-flex align-center justify-center transparent elevation-0" style="z-index: 1">
+                  <v-sheet class="mt-1 mb-n1 px-2 text-center elevation-2 grey lighten-2 rounded-xl" style="z-index: 1" v-bind="attrs" v-on="on">
+                    <h5>{{ event.minuteClock }}</h5>
+                  </v-sheet>
+                </v-sheet>
+              </template>
+              <v-sheet class="pa-2 d-flex flex-column grey lighten-3 text-caption">
+                {{ event }}
+              </v-sheet>
+            </v-menu>
+            -->
+
+            <v-tooltip bottom v-if="hover || typeStarredOrNormalList === 'starred'">
+              <template v-slot:activator="{ on, attrs }">
+                <v-sheet
+                  v-bind="attrs"
+                  v-on="on"
+                  class="mt- mb-n1 px-1 text-center elevation-0 transparent lighten-2 rounded-xl"
+                  style="z-index: 1"
+                  width="30"
+                  @click="toggleSelectedMatch(event)"
+                >
+                  <v-icon :color="typeStarredOrNormalList === 'starred' ? 'yellow darken-3' : 'black'" dense> mdi-star </v-icon>
+                </v-sheet>
+              </template>
+              Favourite this match (add to top)
+            </v-tooltip>
+          </v-sheet>
           <div
             :style="
               'width:100%; border: 0px solid transparent; border-radius: 20px; margin-bottom:4px;' +
-              (hover ? ' box-shadow: 0px 0px 33px -10px grey; ' : ' ')
+              (hover ? ' box-shadow: 0px 0px 23px -10px grey; ' : ' ')
             "
           >
             <v-sheet
               :class="
                 'd-flex flex-row justify-space-between align-center elevation-10 rounded-lg ' +
-                (typeStarredOrNormalList === 'starred' ? 'mb-3 ' : 'mb-0 ')
+                (typeStarredOrNormalList === 'starred' ? 'mb-0 ' : 'mb-0 ')
               "
               width="100%"
               min-height="82"
-              :elevation="typeStarredOrNormalList === 'starred' ? '5' : '3'"
+              :elevation="typeStarredOrNormalList === 'starred' ? '3' : '3'"
             >
               <v-sheet class="pa-1 rounded-lg text-center elevation-0 d-flex flex-column align-center justify-center" width="13%" height="100%">
                 <v-sheet class="mx-2 pa-2 d-flex flex-column align-center justify-center">

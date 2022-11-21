@@ -32,13 +32,29 @@
           <SettingsMenu />
         </v-sheet>
       </v-sheet>
-      <v-sheet class="mx-10 px-7 py-3 transparent elevation-0" width="100%">
-        <v-sheet class="transparent">
+      <v-sheet class="d-flex flex-column align-center mx-10 px-7 py-3 transparent elevation-0" :width="$vuetify.breakpoint.width * 0.97">
+        <v-sheet class="transparent mb-2" width="520">
           <h2>Welcome!</h2>
           <h4 class="font-weight-regular">Choose one event from the list below to see more details and live stats.</h4>
         </v-sheet>
-        <v-sheet class="mt-3 transparent">
-          <TremdgolEventsList :eventsArray="events" :typeStarredOrNormalList="'normal'" />
+        <v-sheet
+          v-if="events.filter((ev) => selectedMatchDictionary[ev.id]).length > 0"
+          class="mt-0 transparent elevation-0 d-flex justify-center"
+          :width="$vuetify.breakpoint.width * 0.97"
+        >
+          <TremdgolEventsList
+            :eventsArray="events.filter((ev) => selectedMatchDictionary[ev.id])"
+            :typeStarredOrNormalList="'starred'"
+            @toggleSelectedMatch="toggleSelectedMatch"
+          />
+        </v-sheet>
+
+        <v-sheet class="mt-0 transparent">
+          <TremdgolEventsList
+            :eventsArray="events.filter((ev) => !selectedMatchDictionary[ev.id])"
+            :typeStarredOrNormalList="'normal'"
+            @toggleSelectedMatch="toggleSelectedMatch"
+          />
         </v-sheet>
       </v-sheet>
     </v-sheet>
@@ -120,9 +136,13 @@ export default {
           console.warn("💲 response.length = " + JSON.stringify(response.data).length);
           //console.error(JSON.stringify(response.data));
           //console.log("response.data = ", response.data);
+
+          //response.data.response.result.liveEvents = parseEventData_LIB.getDemoEvents(); // uncomment this line to load DEMO DEFAULT DATA
+
           response.data.response.result.liveEvents.map((ev) => {
             console.warn(ev.fullName);
             parseEventData_LIB.parseEventData(ev);
+            //ev.isSelectedToTop = this.selectedMatchDictionary[ev.id] ? true : false;
           });
           if (true || this.events.length === 0) {
             this.events = JSON.parse(JSON.stringify(response.data.response.result.liveEvents)); // only set the tremdgolUpcomingEvents array once to void memory leak issue
@@ -144,6 +164,13 @@ export default {
           this.loading = false;
           console.log(`getTremdgolLiveEvents() --- END ${conversorsAndParsersLib.getDatehhmmss(new Date())} `);
         });
+    },
+    toggleSelectedMatch(event) {
+      console.error("this.selectedMatchDictionary = " + JSON.stringify(this.selectedMatchDictionary));
+      this.selectedMatchDictionary[event.id] = !this.selectedMatchDictionary[event.id];
+      console.error("this.selectedMatchDictionary = " + JSON.stringify(this.selectedMatchDictionary));
+      this.$forceUpdate(); // $forceUpdate() is much faster than forceRerender()
+      //this.forceRerender();
     },
   },
 };
